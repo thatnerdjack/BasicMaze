@@ -3,8 +3,8 @@ package com.github.thatnerdjack.basicmaze;
 import java.util.ArrayList;
 
 /**
- * Created by block7 on 2/13/15.
- */
+* Created by block7 on 2/13/15.
+*/
 public class Searcher {
     Maze maze;
 
@@ -12,11 +12,15 @@ public class Searcher {
         this.maze = maze;
     }
 
-    public ArrayList<Integer> findNeighbors(int xCoord, int yCoord) {
-        ArrayList<Integer> neighbors = new ArrayList<Integer>();
-        for(int i = 0; i < maze.getWidth(); i++) {
-            neighbors.add(-1);
+    public MazeCoords checkUp(MazeCoords oldCoords) {
+        MazeCoords newCoords = new MazeCoords(oldCoords.x, oldCoords.y);
+        newCoords.y = oldCoords.y - 1;
+        if(maze.validCoordinates(newCoords)) {
+            //START HERE
         }
+    }
+
+    public ArrayList<MazeCoords> findNeighbors(MazeCoords coords) {
 
     }
 
@@ -26,4 +30,4 @@ public class Searcher {
 TO DO:
 -create checkUp, checkDown, etc. methods
 -finish find Neighbors
- */
+*/
