@@ -55,8 +55,8 @@ public class Maze {
 	// prune search so you can generate neighboring locations and then call this and
 	// discard them without constantly checking the boundaries of the maze)
 	public boolean validCoordinates(MazeCoords c) {
-		return (( c.x >= 0 && c.x < width ) && ( c.y >= 0 && c.y < height));
-	}
+        return (( c.x >= 0 && c.x < width ) && ( c.y >= 0 && c.y < height));
+    }
 	
 	// returns true if the given location is passable (i.e., empty, not a wall)
 	public boolean isPassable(MazeCoords c) {
@@ -64,7 +64,8 @@ public class Maze {
 			System.err.println("Invalid coordinates " + c);
 			return false;
 		}
-		return ! grid[c.y][c.x];
+
+		return !grid[c.y][c.x];
 	}
 	
 	// prints out the maze (with a border)
