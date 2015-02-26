@@ -7,10 +7,13 @@ import java.util.Collections;
 * Created by block7 on 2/13/15.
 */
 public class Searcher {
-    Maze maze;
+    private Maze maze;
+    private MazeCoords start = new MazeCoords(0,0);
+    ArrayList<ArrayList<MazeCoords>> paths = new ArrayList<ArrayList<MazeCoords>>();
 
     public Searcher(Maze maze) {
         this.maze = maze;
+        paths.add(findNeighbors(start));
     }
 
     public MazeCoords checkUp(MazeCoords oldCoords) {
@@ -63,6 +66,10 @@ public class Searcher {
 
         coordList.removeAll(Collections.singleton(null));
         return coordList;
+    }
+
+    public ArrayList<ArrayList<MazeCoords>> findPath() {
+        //START HERE
     }
 
 }

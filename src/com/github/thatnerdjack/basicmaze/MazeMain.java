@@ -8,8 +8,7 @@ public class MazeMain {
 		public static void main(String args[]) {
 			Maze maze = new Maze();
             Searcher searcher = new Searcher(maze);
-            MazeCoords start = new MazeCoords(0,0);
-            System.out.println(searcher.findNeighbors(start));
+            System.out.println(searcher.findPath());
             maze.printMaze();
 		}
 }
