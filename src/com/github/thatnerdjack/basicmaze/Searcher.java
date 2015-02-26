@@ -1,6 +1,7 @@
 package com.github.thatnerdjack.basicmaze;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
 * Created by block7 on 2/13/15.
@@ -52,16 +53,6 @@ public class Searcher {
         }
     }
 
-    public ArrayList<MazeCoords> arrayListClean(ArrayList<MazeCoords> list) {
-        for(int i = 0; i < list.size(); i ++) {
-            MazeCoords item = list.get(i);
-            if(item == null) {
-                list.remove(item);
-            }
-        }
-        return list;
-    }
-
     public ArrayList<MazeCoords> findNeighbors(MazeCoords coords) {
         ArrayList<MazeCoords> coordList = new ArrayList<MazeCoords>();
 
@@ -70,14 +61,8 @@ public class Searcher {
         coordList.add(checkLeft(coords));
         coordList.add(checkRight(coords));
 
-        coordList = arrayListClean(coordList);
+        coordList.removeAll(Collections.singleton(null));
         return coordList;
     }
 
 }
-
-/*
-TO DO:
--create checkUp, checkDown, etc. methods
--finish find Neighbors
-*/
