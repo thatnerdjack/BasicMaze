@@ -8,7 +8,7 @@ public class MazeMain {
 		public static void main(String args[]) {
 			Maze maze = new Maze();
             Searcher searcher = new Searcher(maze);
-            System.out.println(searcher.findPath());
+            System.out.println(searcher.getFinalLayer());
             maze.printMaze();
 		}
 }
