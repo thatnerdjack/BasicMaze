@@ -4,6 +4,7 @@ package com.github.thatnerdjack.basicmaze;
 
 public class MazeCoords {
 	int x, y;
+    MazeCoords parent;
 	
 	public MazeCoords() {
 		x = y = 0;
@@ -13,6 +14,12 @@ public class MazeCoords {
 		this.x = x;
 		this.y = y;
 	}
+
+    public MazeCoords(int x, int y, MazeCoords parent) {
+        this.x = x;
+        this.y = y;
+        this.parent = parent;
+    }
 	
 	public String toString() {
 		return "(" + x + ", " + y + ")";

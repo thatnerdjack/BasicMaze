@@ -7,9 +7,9 @@ package com.github.thatnerdjack.basicmaze;
 public class MazeMain {
 		public static void main(String args[]) {
 			Maze maze = new Maze();
-            Searcher searcher = new Searcher(maze);
-            MazeCoords start = new MazeCoords(0,0);
-            System.out.println(searcher.findNeighbors(start));
             maze.printMaze();
+            Searcher searcher = new Searcher(maze);
+            MazeCoords exit = searcher.genPathTree();
+            System.out.println(searcher.printPath(exit));
 		}
 }
