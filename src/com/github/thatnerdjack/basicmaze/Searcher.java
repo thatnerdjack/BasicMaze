@@ -85,6 +85,10 @@ public class Searcher {
         ArrayList<MazeCoords> oldList = new ArrayList<MazeCoords>();
         oldList.add(start);
         while(true) {
+            if(oldList.size() == 0) {
+                System.out.println("ERROR: Maze unsolvable");
+                return null;
+            }
             ArrayList<MazeCoords> newList = new ArrayList<MazeCoords>();
             for(MazeCoords coords : oldList) {
                 newList.add(checkUp(coords));
@@ -103,6 +107,9 @@ public class Searcher {
     }
 
     public String printPath(MazeCoords exit) {
+        if(exit == null) {
+            System.out.println("ERROR: Path unprintable. MazeCood of null.");
+        }
         MazeCoords node = exit;
         String path = "";
         while(node != null) {

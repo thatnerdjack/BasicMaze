@@ -1,4 +1,4 @@
-package lsrhs.java;
+package com.github.thatnerdjack.basicmaze;
 
 public class BrokenTestMaze extends Maze {
 
