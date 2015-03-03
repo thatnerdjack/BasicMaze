@@ -71,10 +71,10 @@ public class Maze {
 	// prints out the maze (with a border)
 	public void printMaze() {
 		for (int i = 0; i < width + 2; i++)
-			System.out.print("*");
+			System.out.print("=");
 		System.out.println();
 		for (int row = 0; row < height; row++) {
-			System.out.print("*");
+			System.out.print("|");
 			for (int col = 0; col < width; col++) {
 				MazeCoords coords = new MazeCoords(col, row);
 				if (isStartSquare(coords)) 
@@ -86,10 +86,10 @@ public class Maze {
 				else
 					System.out.print("*");
 			}
-			System.out.println("*");
+			System.out.println("|");
 		}
 		for (int i = 0; i < width + 2; i++)
-			System.out.print("*");
+			System.out.print("=");
 		System.out.println();
 	}
 }
