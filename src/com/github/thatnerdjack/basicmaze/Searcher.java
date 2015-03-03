@@ -69,18 +69,6 @@ public class Searcher {
         }
     }
 
-//    public ArrayList<MazeCoords> findNeighbors(MazeCoords coords) {
-//        ArrayList<MazeCoords> coordList = new ArrayList<MazeCoords>();
-//
-//        coordList.add(checkUp(coords));
-//        coordList.add(checkDown(coords));
-//        coordList.add(checkLeft(coords));
-//        coordList.add(checkRight(coords));
-//
-//        coordList.removeAll(Collections.singleton(null));
-//        return coordList;
-//    }
-
     public MazeCoords genPathTree() {
         ArrayList<MazeCoords> oldList = new ArrayList<MazeCoords>();
         oldList.add(start);
