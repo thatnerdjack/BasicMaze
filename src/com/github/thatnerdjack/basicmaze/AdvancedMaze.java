@@ -7,7 +7,7 @@ public abstract class AdvancedMaze {
     private MazeCoords start, end;
 	private ArrayList<ArrayList<Boolean>> grid = new ArrayList<ArrayList<Boolean>>();
 
-	public AdvancedMaze(int maxHeight, int maxWidth) {
+	public AdvancedMaze(int height, int width) {
 		height = 2 + (int)(Math.random()*maxHeight);
         width = 2 + (int)(Math.random()*maxWidth);
         for(int i = 0; i < width; i++) {
