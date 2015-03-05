@@ -6,10 +6,7 @@ package com.github.thatnerdjack.basicmaze;
 
 public class MazeMain {
 		public static void main(String args[]) {
-			Maze maze = new Maze();
-            maze.printMaze();
-            Searcher searcher = new Searcher(maze);
-            MazeCoords exit = searcher.genPathTree();
-            System.out.println(searcher.printPath(exit));
+			RandomMaze randomMaze = new RandomMaze(10, 10);
+            System.out.println(randomMaze.randomEmptySquare());
 		}
 }
