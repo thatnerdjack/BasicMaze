@@ -10,5 +10,7 @@ public class MazeMain {
             randomMaze.printMaze();
             System.out.println(randomMaze.randomEmptySquare());
             System.out.println(randomMaze.numberEmptyNeighbors(new MazeCoords(0,0)));
+            randomMaze.tunnelFrom(new MazeCoords(0,0), 0, 10);
+            randomMaze.printMaze();
 		}
 }

@@ -1,11 +1,15 @@
 package com.github.thatnerdjack.basicmaze;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
  * Created by block7 on 3/5/15.
  */
 public class RandomMaze extends Maze{
+    private MazeCoords start = new MazeCoords(0,0);
+    private ArrayList<ArrayList<Boolean>> visited = new ArrayList<ArrayList<Boolean>>();
+    // visited.x.y
 
     public RandomMaze(int height, int width) {
         this.height = height;
@@ -17,6 +21,15 @@ public class RandomMaze extends Maze{
             }
         }
         grid[0][0] = false;
+        for(int i = 0; i < getWidth(); i++) {
+            visited.add(i, new ArrayList<Boolean>());
+        }
+        for(ArrayList<Boolean> innerList : visited) {
+            for(int i = 0; i < getHeight(); i++) {
+                innerList.add(i, false);
+            }
+        }
+        visited.get(start.x).set(start.y, true);
     }
 
     public int randomX() {
@@ -91,7 +104,7 @@ public class RandomMaze extends Maze{
             switch (directions[i]) {
                 case 0:  // up
                     MazeCoords up = coords.up();
-                    if (canTunnelTo(up)) {
+                    if (canTunnelTo(up)) { //START HERE! MAKE IF VISITED THING
                         tunnelFrom(up, currentDepth + 1, maxDepth);
                     }
                     break;
