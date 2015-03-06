@@ -7,6 +7,8 @@ package com.github.thatnerdjack.basicmaze;
 public class MazeMain {
 		public static void main(String args[]) {
 			RandomMaze randomMaze = new RandomMaze(10, 10);
+            randomMaze.printMaze();
             System.out.println(randomMaze.randomEmptySquare());
+            System.out.println(randomMaze.numberEmptyNeighbors(new MazeCoords(0,0)));
 		}
 }

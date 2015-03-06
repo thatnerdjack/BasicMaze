@@ -38,54 +38,83 @@ public class RandomMaze extends Maze{
         }
     }
 
-    public MazeCoords checkUp(MazeCoords oldCoords) {
-        MazeCoords newCoords = new MazeCoords(oldCoords.x, oldCoords.y, oldCoords);
-        newCoords.y = oldCoords.y - 1;
-        if(validCoordinates(newCoords) && isPassable(newCoords))) { //START HERE
-            visited.get(newCoords.x).set(newCoords.y, true);
-            return newCoords;
-        } else {
-            return null;
-        }
-    }
+//    public MazeCoords checkUp(MazeCoords oldCoords) {
+//        MazeCoords newCoords = new MazeCoords(oldCoords.x, oldCoords.y, oldCoords);
+//        newCoords.y = oldCoords.y - 1;
+//        if(validCoordinates(newCoords) && !isPassable(newCoords)) {
+//            return newCoords;
+//        } else {
+//            return null;
+//        }
+//    }
+//
+//    public MazeCoords checkDown(MazeCoords oldCoords) {
+//        MazeCoords newCoords = new MazeCoords(oldCoords.x, oldCoords.y, oldCoords);
+//        newCoords.y = oldCoords.y + 1;
+//        if(validCoordinates(newCoords) && !isPassable(newCoords)) {
+//            return newCoords;
+//        } else {
+//            return null;
+//        }
+//    }
+//
+//    public MazeCoords checkLeft(MazeCoords oldCoords) {
+//        MazeCoords newCoords = new MazeCoords(oldCoords.x, oldCoords.y, oldCoords);
+//        newCoords.x = oldCoords.x - 1;
+//        if(validCoordinates(newCoords) && !isPassable(newCoords)) {
+//            return newCoords;
+//        } else {
+//            return null;
+//        }
+//    }
+//
+//    public MazeCoords checkRight(MazeCoords oldCoords) {
+//        MazeCoords newCoords = new MazeCoords(oldCoords.x, oldCoords.y, oldCoords);
+//        newCoords.x = oldCoords.x + 1;
+//        if(validCoordinates(newCoords) && !isPassable(newCoords)) {
+//            return newCoords;
+//        } else {
+//            return null;
+//        }
+//    }
 
-    public MazeCoords checkDown(MazeCoords oldCoords) {
-        MazeCoords newCoords = new MazeCoords(oldCoords.x, oldCoords.y, oldCoords);
-        newCoords.y = oldCoords.y + 1;
-        if(maze.validCoordinates(newCoords) && maze.isPassable(newCoords) && !visited.get(newCoords.x).get(newCoords.y)) {
-            visited.get(newCoords.x).set(newCoords.y, true);
-            return newCoords;
-        } else {
-            return null;
-        }
-    }
-
-    public MazeCoords checkLeft(MazeCoords oldCoords) {
-        MazeCoords newCoords = new MazeCoords(oldCoords.x, oldCoords.y, oldCoords);
-        newCoords.x = oldCoords.x - 1;
-        if(maze.validCoordinates(newCoords) && maze.isPassable(newCoords) && !visited.get(newCoords.x).get(newCoords.y)) {
-            visited.get(newCoords.x).set(newCoords.y, true);
-            return newCoords;
-        } else {
-            return null;
-        }
-    }
-
-    public MazeCoords checkRight(MazeCoords oldCoords) {
-        MazeCoords newCoords = new MazeCoords(oldCoords.x, oldCoords.y, oldCoords);
-        newCoords.x = oldCoords.x + 1;
-        if(maze.validCoordinates(newCoords) && maze.isPassable(newCoords) && !visited.get(newCoords.x).get(newCoords.y)) {
-            visited.get(newCoords.x).set(newCoords.y, true);
-            return newCoords;
-        } else {
-            return null;
-        }
-    }
+//    public int numberEmptyNeighbors(MazeCoords coords) {
+//        int returnInt = 0;
+//        if(checkUp(coords) != null) {
+//            returnInt += 1;
+//        }
+//        if(checkDown(coords) != null) {
+//            returnInt += 1;
+//        }
+//        if(checkLeft(coords) != null) {
+//            returnInt += 1;
+//        }
+//        if(checkRight(coords) != null) {
+//            returnInt += 1;
+//        }
+//        return returnInt;
+//    }
 
     public int numberEmptyNeighbors(MazeCoords coords) {
-        int returnInt = 0;
+        int totalEmpty = 0;
+        MazeCoords up = new MazeCoords(coords.x, coords.y - 1);
+        if(validCoordinates(up) && !grid[up.x][up.y]) {
+            totalEmpty++;
+        }
+        MazeCoords right = new MazeCoords(coords.x + 1, coords.y );
+        if(validCoordinates(right) && !grid[right.x][right.y]) {
+            totalEmpty++;
+        }
+        MazeCoords down = new MazeCoords(coords.x, coords.y + 1);
+        if(validCoordinates(down) && !grid[down.x][down.y]) {
+            totalEmpty++;
+        }
+        MazeCoords left = new MazeCoords(coords.x - 1, coords.y);
+        if(validCoordinates(left) && !grid[left.x][left.y]) {
+            totalEmpty++;
+        }
 
-        return returnInt;
+        return totalEmpty;
     }
 
 }
