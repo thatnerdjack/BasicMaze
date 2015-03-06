@@ -38,63 +38,6 @@ public class RandomMaze extends Maze{
         }
     }
 
-//    public MazeCoords checkUp(MazeCoords oldCoords) {
-//        MazeCoords newCoords = new MazeCoords(oldCoords.x, oldCoords.y, oldCoords);
-//        newCoords.y = oldCoords.y - 1;
-//        if(validCoordinates(newCoords) && !isPassable(newCoords)) {
-//            return newCoords;
-//        } else {
-//            return null;
-//        }
-//    }
-//
-//    public MazeCoords checkDown(MazeCoords oldCoords) {
-//        MazeCoords newCoords = new MazeCoords(oldCoords.x, oldCoords.y, oldCoords);
-//        newCoords.y = oldCoords.y + 1;
-//        if(validCoordinates(newCoords) && !isPassable(newCoords)) {
-//            return newCoords;
-//        } else {
-//            return null;
-//        }
-//    }
-//
-//    public MazeCoords checkLeft(MazeCoords oldCoords) {
-//        MazeCoords newCoords = new MazeCoords(oldCoords.x, oldCoords.y, oldCoords);
-//        newCoords.x = oldCoords.x - 1;
-//        if(validCoordinates(newCoords) && !isPassable(newCoords)) {
-//            return newCoords;
-//        } else {
-//            return null;
-//        }
-//    }
-//
-//    public MazeCoords checkRight(MazeCoords oldCoords) {
-//        MazeCoords newCoords = new MazeCoords(oldCoords.x, oldCoords.y, oldCoords);
-//        newCoords.x = oldCoords.x + 1;
-//        if(validCoordinates(newCoords) && !isPassable(newCoords)) {
-//            return newCoords;
-//        } else {
-//            return null;
-//        }
-//    }
-
-//    public int numberEmptyNeighbors(MazeCoords coords) {
-//        int returnInt = 0;
-//        if(checkUp(coords) != null) {
-//            returnInt += 1;
-//        }
-//        if(checkDown(coords) != null) {
-//            returnInt += 1;
-//        }
-//        if(checkLeft(coords) != null) {
-//            returnInt += 1;
-//        }
-//        if(checkRight(coords) != null) {
-//            returnInt += 1;
-//        }
-//        return returnInt;
-//    }
-
     public int numberEmptyNeighbors(MazeCoords coords) {
         int totalEmpty = 0;
         MazeCoords up = new MazeCoords(coords.x, coords.y - 1);
