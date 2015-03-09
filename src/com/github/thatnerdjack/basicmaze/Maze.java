@@ -44,12 +44,20 @@ public class Maze {
 	public boolean isStartSquare(MazeCoords c) {
 		return (c.x == 0 && c.y == 0);
 	}
+
+    public MazeCoords startSquare() {
+        return new MazeCoords(0,0);
+    }
 	
 	// returns true if the given location is the end square (can be used to terminate search)
 	// doesn't check whether coords are valid
 	public boolean isEndSquare(MazeCoords c) {
 		return (c.x == (width - 1) && c.y == (height - 1));
 	}
+
+    public MazeCoords endSquare() {
+        return new MazeCoords(width - 1, height - 1);
+    }
 	
 	// returns true if the given location is a valid location for the maze (can help
 	// prune search so you can generate neighboring locations and then call this and
