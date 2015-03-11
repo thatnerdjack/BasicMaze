@@ -5,11 +5,11 @@ package com.github.thatnerdjack.basicmaze;
 // object and print it out
 
 public class MazeMain {
-		public static void main(String args[]) {
-			RandomMaze randomMaze = new RandomMaze(10, 10);
-            randomMaze.printMaze();
-            System.out.println(randomMaze.randomEmptySquare());
-            System.out.println(randomMaze.numberEmptyNeighbors(new MazeCoords(0,0)));
-            randomMaze.printMaze();
-		}
+    public static void main(String args[]) {
+        RandomMaze randomMaze = new RandomMaze(10, 10);
+        randomMaze.printMaze();
+        Searcher searcher = new Searcher(randomMaze);
+        MazeCoords end = searcher.genPathTree();
+        System.out.println(searcher.printPath(end));
+    }
 }

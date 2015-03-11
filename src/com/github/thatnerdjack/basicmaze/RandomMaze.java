@@ -7,7 +7,8 @@ import java.util.Random;
  * Created by block7 on 3/5/15.
  */
 public class RandomMaze extends Maze{
-    private final int MAX_TUNNEL_LENGTH = 7;
+    private final int MAX_TUNNEL_LENGTH = 15;
+    private final int MIN_TUNNEL_LENGTH = 5;
 
     public RandomMaze(int height, int width) {
         this.height = height;
@@ -16,7 +17,15 @@ public class RandomMaze extends Maze{
         for (int i = 0; i < height; i++)
             for (int j = 0; j < width; j++)
                 grid[i][j] = true;
-        tunnelFrom(new MazeCoords(0,0), 0, height * width + 1);
+        grid[0][0] = false;
+        generateMaze();
+    }
+
+    public void initializeGrid() {
+        for (int i = 0; i < height; i++)
+            for (int j = 0; j < width; j++)
+                grid[i][j] = true;
+        grid[0][0] = false;
     }
 
     public int randomX() {
@@ -119,11 +128,18 @@ public class RandomMaze extends Maze{
     }
 
     public void generateMaze() {
+        initializeGrid();
         boolean foundEnd = false;
+        tunnelFrom(startSquare(), 0, width);
+        int attempts = 0;
         while(!foundEnd) {
-            int tunnelLength = (int)(Math.random() * MAX_TUNNEL_LENGTH + 1);
-            MazeCoords startSquare = randomSquare();
-            foundEnd = tunnelFrom(startSquare, 0, tunnelLength);
+            int tunnelLength =
+                    (int)(Math.random() * (1 + MAX_TUNNEL_LENGTH - MIN_TUNNEL_LENGTH));
+            MazeCoords startSquare = randomEmptySquare();
+            if(isStartSquare(startSquare))
+                foundEnd = tunnelFrom(startSquare, 0, tunnelLength);
+            if(!foundEnd)
+                foundEnd = (numberEmptyNeighbors(endSquare()) > 0);
         }
     }
 
