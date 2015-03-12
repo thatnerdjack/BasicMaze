@@ -138,7 +138,6 @@ public class RandomMaze extends Maze{
             MazeCoords startSquare = randomEmptySquare();
             if(! isStartSquare(startSquare)) {
                 foundEnd = tunnelFrom(startSquare, 0, tunnelLength);
-                printMaze();
             }
             if(!foundEnd) {
                 foundEnd = (numberEmptyNeighbors(endSquare()) > 0);
