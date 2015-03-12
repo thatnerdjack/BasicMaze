@@ -136,10 +136,13 @@ public class RandomMaze extends Maze{
             int tunnelLength =
                     (int)(Math.random() * (1 + MAX_TUNNEL_LENGTH - MIN_TUNNEL_LENGTH));
             MazeCoords startSquare = randomEmptySquare();
-            if(isStartSquare(startSquare))
+            if(! isStartSquare(startSquare)) {
                 foundEnd = tunnelFrom(startSquare, 0, tunnelLength);
-            if(!foundEnd)
+                printMaze();
+            }
+            if(!foundEnd) {
                 foundEnd = (numberEmptyNeighbors(endSquare()) > 0);
+            }
         }
     }
 
