@@ -9,6 +9,7 @@ import java.util.Random;
 public class RandomMaze extends Maze{
     private final int MAX_TUNNEL_LENGTH = 15;
     private final int MIN_TUNNEL_LENGTH = 5;
+    private final int MAX_ATTEMPTS = 100;
 
     public RandomMaze(int height, int width) {
         this.height = height;
@@ -134,15 +135,18 @@ public class RandomMaze extends Maze{
         int attempts = 0;
         while(!foundEnd) {
             int tunnelLength =
-                    (int)(Math.random() * (1 + MAX_TUNNEL_LENGTH - MIN_TUNNEL_LENGTH));
+                    (int)(Math.random() * (1 + MAX_TUNNEL_LENGTH - MIN_TUNNEL_LENGTH) + MIN_TUNNEL_LENGTH);
             MazeCoords startSquare = randomEmptySquare();
-            if(! isStartSquare(startSquare)) {
-                foundEnd = tunnelFrom(startSquare, 0, tunnelLength);
-            }
-            if(!foundEnd) {
+            if(isStartSquare(startSquare))
+                continue;
+            foundEnd = tunnelFrom(startSquare, 0, tunnelLength);
+            if(!foundEnd)
                 foundEnd = (numberEmptyNeighbors(endSquare()) > 0);
-            }
+            if(++attempts > MAX_ATTEMPTS)
+                break;
         }
+        if(foundEnd)
+            return;
     }
 
 }
